@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"fmt"
 	"go-crud/model"
 	"go-crud/service"
 	"strconv"
@@ -49,11 +48,12 @@ func (d *Data) CreateData(c *gin.Context) {
 
 	err := c.ShouldBindJSON(&parameter)
 	if err != nil {
-		fmt.Println(err)
+		d.log.WithField("module", "service").Error("Failed to create data")
 		c.JSON(400, err)
 		return
 	}
 
+	d.log.WithField("module", "service").Info("Success to create data")
 	err = service.CreateData(d.DB, c, parameter)
 	if err != nil {
 		c.JSON(500, err)
