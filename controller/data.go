@@ -71,10 +71,12 @@ func (d *Data) UpdateData(c *gin.Context) {
 
 	err := c.ShouldBindJSON(&parameter)
 	if err != nil {
+		d.log.WithField("module", "service").Error("Failed to Update data")
 		c.JSON(400, err)
 		return
 	}
 
+	d.log.WithField("module", "service").Info("Success to update data")
 	err = service.UpdateData(d.DB, c, parameter)
 	if err != nil {
 		c.JSON(400, err)
