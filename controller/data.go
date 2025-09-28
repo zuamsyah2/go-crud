@@ -89,5 +89,6 @@ func (d *Data) UpdateData(c *gin.Context) {
 func (d *Data) DeleteData(c *gin.Context) {
 	id := c.Param("id")
 	service.DeleteData(d.DB, c, id)
+	d.log.WithField("module", "service").Info("Success to delete data")
 	c.JSON(200, gin.H{"status": "success"})
 }
