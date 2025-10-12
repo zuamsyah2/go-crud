@@ -32,6 +32,8 @@ func main() {
 	router.POST("/data", data.CreateData)
 	router.PUT("/data/:id", data.UpdateData)
 	router.DELETE("/data/:id", data.DeleteData)
+
 	log.Println("Server running at http://localhost:8080")
+
 	router.Run()
 }
