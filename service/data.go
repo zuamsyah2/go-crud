@@ -61,7 +61,7 @@ func DeleteData(db *gorm.DB, ctx *gin.Context, id string) {
 		if result := db.Delete(&dataToDelete); result.Error != nil {
 			println("Gagal menghapus user:", result.Error.Error())
 		} else {
-			println("User dengan ID 1 berhasil dihapus secara janglanpermanen. Jumlah baris terpengaruh:", result.RowsAffected)
+			println("User dengan ID 1 berhasil dihapus secara permanen. Jumlah baris terpengaruh:", result.RowsAffected)
 		}
 	}
 }
